@@ -15,6 +15,7 @@
     font-family: Arial, sans-serif;
     overflow-x: hidden;
     width: 100vw;
+    text-align: center;
   }
   html, body {
     width: 100% !important;
@@ -24,8 +25,71 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Ginko - addon Firefox</h1>
 
+
+<div>
+  <h1>Ginko - addon Firefox</h1>
+</div>
+
+
+
+<div style="margin-top: 100px;">
+  <h2>Site internet et application installable (<i>Windows et Android</i>)</h2>
+  <a target="_blank" href="https://christophe-app.github.io/ginkotime-web/">Consulter</a>
+</div>
+
+
+
+<div style="margin-top: 100px;">
+  <h2>Addon Firefox - dernière version disponible</h2>
+  <div id="latest-version">
+    Chargement...
+  </div>
+</div>
+
+
+
+<script>
+async function loadLatestVersion() {
+  try {
+
+    const response = await fetch("./update.json");
+
+    if (!response.ok) {
+      throw new Error("<i>Erreur de chargement du fichier \"update.json\"</i>");
+    }
+
+    const data = await response.json();
+
+    const addon = Object.values(data.addons)[0];
+
+    if (!addon || !addon.updates || !addon.updates.length) {
+      throw new Error("<i>Aucune version trouvée</i>");
+    }
+
+    const latest = addon.updates[0];
+
+    document.getElementById("latest-version").innerHTML = `
+      <p>Version ${latest.version}</p>
+      <p>
+        <a href="${latest.update_link}">
+          Téléchargement du fichier XPI
+        </a>
+      </p>
+    `;
+
+  } catch (error) {
+
+    document.getElementById("latest-version").innerHTML =
+      "<i>Impossible de récupérer les informations sur la version.</i>";
+
+    console.error(error);
+
+  }
+}
+
+loadLatestVersion();
+</script>
 
 </body>
 </html>
