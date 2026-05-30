@@ -4,11 +4,6 @@
       "updates":
       [
         {
-          "version": "1.0.0",
-          "update_link": "https://christophe-app.github.io/ginkotime-addon-firefox/releases/addon-ginko-firefox.1.0.0.xpi",
-          "update_hash": "sha256:4ee4ea3acbfc3a2415fb69dd68c4fa9c1a588fa15b975de28cc755e617f18d20"
-        },
-        {
           "version": "1.0.1",
           "update_link": "https://christophe-app.github.io/ginkotime-addon-firefox/releases/addon-ginko-firefox.1.0.1.xpi",
           "update_hash": "sha256:cc4521a67380fa32cf8b787325217b049d348156dd25bb967c97a4af76bd714c"
